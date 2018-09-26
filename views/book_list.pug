@@ -1,0 +1,18 @@
+//-
+    The view extends the layout.pug base template and overrides the block named 'content'.
+    The exports.book_list function in bookController renders this pug template.
+    title and book_list are variables that we passed in the controller via the render() method.
+
+extends layout
+
+block content
+  h1= title
+  
+  ul
+    each book in book_list
+      li 
+        a(href=book.url) #{book.title} 
+        |  (#{book.author.name})
+
+    else
+      li There are no books.
