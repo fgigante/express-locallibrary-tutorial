@@ -30,36 +30,37 @@ block content
             
     div.form-group
       label(for='status') Status:
-      select#status.form-control(type='select' placeholder='Select status' name='status' required='true')
-        option(
-              value='Maintenance'
-              selected=(
-                bookinstance.status == 'Maintenance'
-                )
-              ) Maintenance
-        option(
-              value='Available'
-              selected=(
-                bookinstance.status == 'Available'
-                )
-              ) Available
-        option(
-              value='Loaned'
-              selected=(
-                bookinstance.status == 'Loaned'
-                )
-              ) Loaned
-        option(
-              value='Reserved'
-              selected=(
-                bookinstance.status == 'Reserved'
-                )
-              ) Reserved
-
-        //-option(value='Maintenance') Maintenance
-        //-option(value='Available') Available
-        //-option(value='Loaned') Loaned
-        //-option(value='Reserved') Reserved
+      if !bookinstance
+        select#status.form-control(type='select' placeholder='Select status' name='status' required='true')
+          option(value='Maintenance') Maintenance
+          option(value='Available') Available
+          option(value='Loaned') Loaned
+          option(value='Reserved') Reserved
+      else
+        select#status.form-control(type='select' placeholder='Select status' name='status' required='true')
+          option(
+            value='Maintenance'
+            selected=(bookinstance.status == 'Maintenance')
+          ) Maintenance
+          option(
+            value='Available'
+            selected=(bookinstance.status == 'Available')
+          ) Available
+          option(
+            value='Loaned'
+            selected=(bookinstance.status == 'Loaned')
+          ) Loaned
+          option(
+            value='Reserved'
+            selected=(bookinstance.status == 'Reserved')
+          ) Reserved
+        
+        
+        //-
+          option(value='Maintenance') Maintenance
+          option(value='Available') Available
+          option(value='Loaned') Loaned
+          option(value='Reserved') Reserved
 
     button.btn.btn-primary(type='submit') Submit
 
